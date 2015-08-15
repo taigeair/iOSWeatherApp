@@ -49,7 +49,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         self.weatherReport = weatherPhrase[0] as! String
                         
                         self.weatherReport = self.weatherReport.stringByReplacingOccurrencesOfString("&deg;", withString: "˚")
-                        print(self.weatherReport)
+                        var weatherReportTemp = NSString(string: self.weatherReport)
+                        var firstChar = weatherReportTemp.substringToIndex(1)
+                        firstChar = firstChar.lowercaseString
+                        weatherReportTemp = weatherReportTemp.substringFromIndex(1)
+                        
+
+                        
+                        self.weatherReport = "The weather in " + cleanString + " is " + (firstChar as String) + (weatherReportTemp as String)
+
+                        
+                        println(self.weatherReport)
                     } else {
                         urlError = true
                     }
