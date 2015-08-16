@@ -14,13 +14,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userCity: UITextField!
     
-    var weatherReport = ""
+    var weatherReport = "" // created variable
     
-    func showError(){
-        if userCity.text == nil{
-            responseWeather.text = "Please enter a city."
+    func showError(){ // error messages
+        
+        var city = NSString(string: userCity.text)
+        
+        if city.length > 0 {
+            responseWeather.text = "Was not able to find weather for " + userCity.text + ". Please retry."
+            println(city.length)
         } else {
-        responseWeather.text = "Was not able to find weather for " + userCity.text + ". Please retry."
+
+            responseWeather.text = "Please enter a city."
+ 
         }
     }
     
